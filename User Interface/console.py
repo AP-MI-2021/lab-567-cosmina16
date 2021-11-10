@@ -1,5 +1,6 @@
 from Domain.rezervare import to_string, get_ID, get_nume, get_clasa, get_pret, get_checkin, creeaza_rezervare
 from Logic.CRUD import adauga_rezervare, get_by_id, modifica_rezervare, sterge_rezervare
+from Logic.clasaSuperioara import transformareClasaSuperioara
 from Logic.ordonare import ordonare_rezervare
 from Logic.pret_maxim import pret_max_clasa
 from Logic.reducere import reduce_pret_checkin
@@ -82,7 +83,7 @@ def handle_crud(lst_rezervare):
 def handle_reducere(rezervare):
     try:
         procentaj_reducere=int(input("Dati un procentaj de reducere(0-100):"))
-        reducere = reduce_pret_checkin(rezervare, procentaj_reducere)
+        rezervare = reduce_pret_checkin(rezervare, procentaj_reducere)
 
         print("pretul rezervarilor a fost redus cu succes")
     except ValueError as ve:
@@ -103,9 +104,22 @@ def handle_pret_max(rezervare):
         print('Eroare:',ve)
     return rezervare
 
+def handle_trecclssup(rezervare):
+    try:
+        nume=input("Dati un nume pe care vreti sa l trecem la clasa superioara")
+        rezervare = transformareClasaSuperioara(nume, rezervare)
+
+        print("pretul rezervarilor a fost redus cu succes")
+    except ValueError as ve:
+        print('Eroare:',ve)
+    return rezervare
+
+
+
 def show_menu():
     print('1. crud')
     print('3. Reducere pret pntru cei cu checkinul facut')
+    print('2. Trecere la clasa superioara')
     print('4. Determina pretul maxim pentru fiecare clasa')
     print('5. Ordoneaza descrescator in functie de pret')
     print ('z.Undo')
@@ -144,6 +158,9 @@ def run_ui(rezervare):
         optiune = input('Optiunea aleasa: ')
         if optiune =='1':
             rezervare = handle_crud(rezervare)
+            list_versions, current_version=handle_new_list(list_versions, current_version, rezervare)
+        elif optiune =='':
+            rezervare = handle_trecclssup(rezervare)
             list_versions, current_version=handle_new_list(list_versions, current_version, rezervare)
         elif optiune == '3':
             rezervare =handle_reducere(rezervare)

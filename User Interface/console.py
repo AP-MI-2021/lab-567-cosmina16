@@ -159,7 +159,7 @@ def run_ui(rezervare):
         if optiune =='1':
             rezervare = handle_crud(rezervare)
             list_versions, current_version=handle_new_list(list_versions, current_version, rezervare)
-        elif optiune =='':
+        elif optiune =='2':
             rezervare = handle_trecclssup(rezervare)
             list_versions, current_version=handle_new_list(list_versions, current_version, rezervare)
         elif optiune == '3':

@@ -1,61 +1,43 @@
-def creeaza_rezervare(ID,nume,clasa,pret,checkin):
-    """reprezinta o rezervare
-    :param ID:string
-    :param nume:string
-    :param clasa:string
-    :param pret:float
-    :param checkin:string
-    :return:un dictionar ce reprezinta o rezervare
+def get_new_reservation(_id: int, _nume: str, _clasa: str, _pret: float, _checkin: str):
     """
-    return [ID, nume, clasa,pret,checkin]
-
-def get_ID(rezervare):
+    Dictionarul in care se retin datele unei rezervari
+    :param _id: id ul rezervarii, un nr intreg
+    :param _nume: numeele pe care este facuta rezervarea
+    :param _clasa: clasa de zbor
+    :param _pret: pretul rezervarii
+    :param _checkin: checkinul ("da" / "nu")
+    :return: o rezervare
     """
-    da id-ul unei rezervari
-    :param rezervare:rezervare
-    :return: id-ul rezervarii - string
-    """
-    return rezervare[0]
-
-def get_nume(rezervare):
-    """
-    da numele unei rezervari
-    :param rezervare:revervare
-    :return: numele unei rezervari - id
-    """
-    return rezervare[1]
-
-def get_clasa(rezervare):
-    """
-    da clasa unei rezervari
-    :param rezervare: rezervare
-    :return:clasa unei rezervari
-    """
-    return rezervare[2]
-
-def get_pret(rezervare):
-    """
-    da pretul unei rezervari
-    :param rezervare:rezervare
-    :return:pretul unei rezervari
-    """
-    return rezervare[3]
-
-def get_checkin(rezervare):
-    """
-    da starea checkinului unei rezervari
-    :param rezervare:rezervare
-    :return:checkinul unei rezervari
-    """
-    return rezervare[4]
-
-def to_string(rezervare):
-    return "ID: {}, nume: {}, clasa: {},pret: {}, checkin: {}".format(
-        get_ID(rezervare),
-        get_nume(rezervare),
-        get_clasa(rezervare),
-        get_pret(rezervare),
-        get_checkin(rezervare)
-    )
+    reservation = {
+        'id': _id,
+        'nume': _nume,
+        'clasa': _clasa,
+        'pret': _pret,
+        'checkin': _checkin,
+    }
+    return reservation
 
 
+def get_id(reservation):
+    return reservation["id"]
+
+
+def get_name(reservation):
+    return reservation["nume"]
+
+
+def get_class(reservation):
+    return reservation["clasa"]
+
+
+def get_price(reservation):
+    return reservation["pret"]
+
+
+def get_checkin(reservation):
+    return reservation["checkin"]
+
+
+def get_reservation_string(reservation):
+    return f"{reservation['id']}, {reservation['nume']}, {reservation['clasa']}, {reservation['pret']},\
+{reservation['checkin']}"

@@ -1,12 +1,19 @@
-from Domain.rezervare import get_pret
+from Domain.rezervare import *
 
-def pret(rezervare):
+
+def pret(reservation):
     """
-    criterul de ordonare
-    :param rezervare: rezervare
+    Functia reprezinta criteriul de ordonare al listei
+    :param reservation: rezervarea
     :return: pretul rezervarii
     """
-    return get_pret(rezervare)
+    return get_price(reservation)
 
-def ordonare_rezervare(lst_rezervare):
-    return sorted(lst_rezervare,key=pret, Reverse=True)
+
+def ordonare_rezervari(lista):
+    """
+    Functia returneaza lista ordonata dupa criteriile precizate.
+    :param lista: lista de rezervari
+    :return: lista ordonata
+    """
+    return sorted(lista, key=pret, reverse=True)

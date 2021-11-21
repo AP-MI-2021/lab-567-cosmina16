@@ -1,4 +1,4 @@
-from Domain.rezervare import get_nume, get_clasa, creeaza_rezervare, get_ID, get_pret, get_checkin
+from Domain.rezervare import get_name, get_class, get_new_reservation, get_id, get_price, get_checkin
 
 
 def transformareClasaSuperioara(nume, lista):
@@ -10,16 +10,16 @@ def transformareClasaSuperioara(nume, lista):
     '''
     new_list = []
     for rezervare in lista:
-        if get_nume(rezervare) == nume:
-            if get_clasa(rezervare) == 'economy':
+        if get_name(rezervare) == nume:
+            if get_class(rezervare) == 'economy':
                 clasa_noua = 'economy plus'
             else:
                 clasa_noua = 'business'
-            rezervareNoua = creeaza_rezervare(
-                get_ID(rezervare),
-                get_nume(rezervare),
+            rezervareNoua = get_new_reservation(
+                get_id(rezervare),
+                get_name(rezervare),
                 clasa_noua,
-                get_pret(rezervare),
+                get_price(rezervare),
                 get_checkin(rezervare)
             )
             new_list.append(rezervareNoua)

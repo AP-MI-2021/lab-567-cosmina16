@@ -1,5 +1,12 @@
-from Tests.testAll import test_all
+from Tests.tests import *
+from UserInterface.choosemenu import alegeti_meniul
 
-if __name__=='__main__':
 
-    test_all()
+def main():
+    alegeti_meniul()
+
+
+if __name__ == '__main__':
+    tests()
+    main()
+    
